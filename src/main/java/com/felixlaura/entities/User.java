@@ -32,11 +32,19 @@ public class User implements UserDetails {
 
     private UserRole userRole;
 
+
+
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(userRole.name()));
     }
 
+    @Override
+    public String getPassword(){
+        return password;
+    }
     @Override
     public String getUsername() {
         return email;
