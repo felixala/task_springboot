@@ -1,5 +1,6 @@
 package com.felixlaura.entities;
 
+import com.felixlaura.dto.UserDto;
 import com.felixlaura.enums.UserRole;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,9 +32,6 @@ public class User implements UserDetails {
     private String password;
 
     private UserRole userRole;
-
-
-
 
 
     @Override
@@ -68,6 +66,16 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public UserDto getUserDto() {
+        UserDto userDto = new UserDto();
+        userDto.setId(id);
+        userDto.setName(name);
+        userDto.setEmail(email);
+        userDto.setUserRole(userRole);
+
+        return userDto;
     }
 
 
